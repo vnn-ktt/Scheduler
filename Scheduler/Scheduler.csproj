@@ -9,16 +9,39 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.24.2-preview.1" />
+    <Compile Remove="Bot\**" />
+    <Compile Remove="Features\**" />
+    <Compile Remove="Integrations\**" />
+    <Compile Remove="Новая папка\**" />
+    <EmbeddedResource Remove="Bot\**" />
+    <EmbeddedResource Remove="Features\**" />
+    <EmbeddedResource Remove="Integrations\**" />
+    <EmbeddedResource Remove="Новая папка\**" />
+    <None Remove="Bot\**" />
+    <None Remove="Features\**" />
+    <None Remove="Integrations\**" />
+    <None Remove="Новая папка\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Bot\Handlers\" />
-    <Folder Include="Features\Providers\" />
-    <Folder Include="Features\Services\" />
-    <Folder Include="Features\Schedule\" />
-    <Folder Include="Features\Bookings\" />
-    <Folder Include="Integrations\Telegram\" />
+    <PackageReference Include="DotNetEnv" Version="3.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.11">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.11" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.24.2-preview.1" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.3" />
+    <PackageReference Include="Telegram.Bot" Version="22.10.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Infrastructure\Integrations\Telegram\Handlers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+	  <Folder Include="Application\" />
   </ItemGroup>
 
 </Project>
