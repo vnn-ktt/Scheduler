@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace Scheduler.Infrastructure.Integrations.Telegram;
 
-namespace Scheduler.Infrastructure.Integrations.Telegram
+public static class CallbackData
 {
-    internal class CallbackData
-    {
-    }
+    public const string MainMenu = "main_menu";
+    public const string Client = "client";
+    public const string Provider = "provider";
 }

@@ -6,19 +6,23 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <UserSecretsId>79da1ecf-d07b-4ecf-bd31-ca50486ce4d5</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Remove="Bot\**" />
     <Compile Remove="Features\**" />
+    <Compile Remove="Infrastructure\Integrations\Telegram\Handlers\**" />
     <Compile Remove="Integrations\**" />
     <Compile Remove="Новая папка\**" />
     <EmbeddedResource Remove="Bot\**" />
     <EmbeddedResource Remove="Features\**" />
+    <EmbeddedResource Remove="Infrastructure\Integrations\Telegram\Handlers\**" />
     <EmbeddedResource Remove="Integrations\**" />
     <EmbeddedResource Remove="Новая папка\**" />
     <None Remove="Bot\**" />
     <None Remove="Features\**" />
+    <None Remove="Infrastructure\Integrations\Telegram\Handlers\**" />
     <None Remove="Integrations\**" />
     <None Remove="Новая папка\**" />
   </ItemGroup>
@@ -34,10 +38,6 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.24.2-preview.1" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.3" />
     <PackageReference Include="Telegram.Bot" Version="22.10.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Infrastructure\Integrations\Telegram\Handlers\" />
   </ItemGroup>
 
   <ItemGroup>

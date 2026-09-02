@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace Scheduler.Infrastructure.Integrations.Telegram.Configuration;
 
-namespace Scheduler.Infrastructure.Integrations.Telegram.Configuration
+public sealed class BotSettings
 {
-    internal class BotSettings
-    {
-    }
+    public const string SectionName = "Telegram";
+    public required string BotToken { get; init; }
 }
