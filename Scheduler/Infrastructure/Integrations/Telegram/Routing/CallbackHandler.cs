@@ -67,6 +67,12 @@ public sealed class CallbackHandler
                     cancellationToken
                 );
                 break;
+
+            default:
+                Console.WriteLine(
+                    $"Unknown callback: {callback.Data}"
+                );
+                break;
         }
     }
 }

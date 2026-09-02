@@ -8,8 +8,7 @@ public sealed class CommandHandler
 {
     private readonly MainMenuHandler _mainMenuHandler;
 
-    public CommandHandler(
-        MainMenuHandler mainMenuHandler)
+    public CommandHandler(MainMenuHandler mainMenuHandler)
     {
         _mainMenuHandler = mainMenuHandler;
     }
@@ -20,9 +19,7 @@ public sealed class CommandHandler
         CancellationToken cancellationToken)
     {
         if (message.Text is null)
-        {
             return;
-        }
 
         switch (message.Text)
         {
@@ -31,22 +28,6 @@ public sealed class CommandHandler
                     bot,
                     message.Chat.Id,
                     cancellationToken
-                );
-                break;
-
-            case "/help":
-                await bot.SendMessage(
-                    chatId: message.Chat.Id,
-                    text: "Используйте /start для открытия меню.",
-                    cancellationToken: cancellationToken
-                );
-                break;
-
-            default:
-                await bot.SendMessage(
-                    chatId: message.Chat.Id,
-                    text: "Используйте меню бота.",
-                    cancellationToken: cancellationToken
                 );
                 break;
         }

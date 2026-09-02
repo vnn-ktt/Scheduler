@@ -12,12 +12,7 @@ public sealed class MainMenuHandler
     {
         await bot.SendMessage(
             chatId: chatId,
-            text:
-            """
-            Добро пожаловать в Scheduler.
-
-            Кто вы?
-            """,
+            text: GetText(),
             replyMarkup: CreateKeyboard(),
             cancellationToken: cancellationToken
         );
@@ -32,15 +27,23 @@ public sealed class MainMenuHandler
         await bot.EditMessageText(
             chatId: chatId,
             messageId: messageId,
-            text:
-            """
-            Добро пожаловать в Scheduler.
-
-            Кто вы?
-            """,
+            text: GetText(),
             replyMarkup: CreateKeyboard(),
             cancellationToken: cancellationToken
         );
+    }
+
+    private static string GetText()
+    {
+        return
+            """
+            Scheduler
+
+            Записывайтесь к специалистам
+            или принимайте записи от своих клиентов.
+
+            Что вы хотите сделать?
+            """;
     }
 
     private static InlineKeyboardMarkup CreateKeyboard()
@@ -49,13 +52,13 @@ public sealed class MainMenuHandler
         [
             [
                 InlineKeyboardButton.WithCallbackData(
-                    "Я клиент",
+                    "📅 Записаться",
                     CallbackData.Client
                 )
             ],
             [
                 InlineKeyboardButton.WithCallbackData(
-                    "Я исполнитель",
+                    "💼 Принимать записи",
                     CallbackData.Provider
                 )
             ]
