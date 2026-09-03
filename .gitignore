@@ -1,9 +1,5 @@
 .env
-.vs/
+.vs
 .obj
 .bin
 
-Scheduler/.env
-Scheduler/.vs
-Scheduler/.obj
-Scheduler/.bin
