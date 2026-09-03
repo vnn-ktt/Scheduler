@@ -1,9 +1,11 @@
 .env
 .vs
-.obj
-.bin
+[Bb]in/
+[Oo]bj/
 
 ./Scheduler/.env
 ./Scheduler/.vs
-./Scheduler/.obj
-./Scheduler/.bin
+./Scheduler/bin/
+./Scheduler/obj/
+./Scheduler/[Bb]in/
+./Scheduler/[Oo]bj/

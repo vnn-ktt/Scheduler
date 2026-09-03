@@ -8,6 +8,7 @@ using Scheduler.Infrastructure.Integrations.Telegram;
 using Scheduler.Infrastructure.Integrations.Telegram.Configuration;
 using Scheduler.Infrastructure.Integrations.Telegram.Routing;
 using Scheduler.Infrastructure.Integrations.Telegram.Screens;
+using Scheduler.Infrastructure.Integrations.Telegram.State;
 using Scheduler.Infrastructure.Persistence;
 using System.Text;
 using Telegram.Bot;
@@ -23,6 +24,7 @@ var connectionString =
         "ConnectionStrings:Scheduler is not configured."
     );
 
+/* Singletons */
 builder.Services
     .AddOptions<BotSettings>()
     .Bind(builder.Configuration.GetSection(BotSettings.SectionName))
@@ -31,7 +33,6 @@ builder.Services
         "Telegram:BotToken is not configured."
     )
     .ValidateOnStart();
-
 builder.Services.AddSingleton<ITelegramBotClient>(
     serviceProvider =>
     {
@@ -44,7 +45,9 @@ builder.Services.AddSingleton<ITelegramBotClient>(
         );
     }
 );
+builder.Services.AddSingleton<TelegramSessionStore>();
 
+/* DB */
 builder.Services.AddDbContext<SchedulerDbContext>(
     options =>
     {
@@ -52,19 +55,17 @@ builder.Services.AddDbContext<SchedulerDbContext>(
     }
 );
 
+/* Bot */
 builder.Services.AddHostedService<TelegramBotWorker>();
 
+/* Handlers */
 builder.Services.AddScoped<TelegramUpdateHandler>();
-
 builder.Services.AddScoped<CommandHandler>();
 builder.Services.AddScoped<CallbackHandler>();
-
 builder.Services.AddScoped<MainMenuHandler>();
 builder.Services.AddScoped<ClientHandler>();
 builder.Services.AddScoped<ProviderHandler>();
-
-builder.Services.AddScoped<CreateProviderHandler>();
-
+builder.Services.AddScoped<Scheduler.Infrastructure.Integrations.Telegram.Screens.CreateProviderHandler>();
 
 var app = builder.Build();
 

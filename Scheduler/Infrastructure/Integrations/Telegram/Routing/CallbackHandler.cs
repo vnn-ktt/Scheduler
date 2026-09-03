@@ -9,15 +9,18 @@ public sealed class CallbackHandler
     private readonly MainMenuHandler _mainMenuHandler;
     private readonly ClientHandler _clientHandler;
     private readonly ProviderHandler _providerHandler;
+    private readonly CreateProviderHandler _createProviderHandler;
 
     public CallbackHandler(
         MainMenuHandler mainMenuHandler,
         ClientHandler clientHandler,
-        ProviderHandler providerHandler)
+        ProviderHandler providerHandler,
+        CreateProviderHandler createProviderHandler)
     {
         _mainMenuHandler = mainMenuHandler;
         _clientHandler = clientHandler;
         _providerHandler = providerHandler;
+        _createProviderHandler = createProviderHandler;
     }
 
     public async Task HandleAsync(
@@ -64,6 +67,14 @@ public sealed class CallbackHandler
                     bot,
                     chatId,
                     messageId,
+                    cancellationToken
+                );
+                break;
+
+            case CallbackData.ProviderCreate:
+                await _createProviderHandler.StartAsync(
+                    bot,
+                    callback,
                     cancellationToken
                 );
                 break;

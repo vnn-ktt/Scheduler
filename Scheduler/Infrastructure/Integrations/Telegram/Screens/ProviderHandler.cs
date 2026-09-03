@@ -25,7 +25,7 @@ public sealed class ProviderHandler
                 [
                     InlineKeyboardButton.WithCallbackData(
                         "Создать профиль",
-                        "provider:create"
+                        CallbackData.ProviderCreate
                     )
                 ],
                 [
