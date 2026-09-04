@@ -77,6 +77,7 @@ public sealed class CommandHandler
                     message,
                     cancellationToken
                 );
+
                 break;
         }
     }
